@@ -3,8 +3,8 @@ setup for the workflow of the DDPD team
 
 #### Make a Conda env
 
-#### run python setup.py develope
+#### run python setup.py develop
 
-#### test setup by running ddpd test --setup
+#### test setup by running ddpd test
 
 #### something something Azure
