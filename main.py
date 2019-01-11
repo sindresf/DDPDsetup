@@ -1,3 +1,4 @@
+import fire
 
 
 class CLI:
@@ -6,4 +7,5 @@ class CLI:
 
 
 if __name__ == '__main__':
+    cli = fire(CLI("mao"))
     print(CLI("lol").lol)
