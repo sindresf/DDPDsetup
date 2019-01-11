@@ -11,6 +11,7 @@ be looking.'''
 
 requirements = [
     'fire',
+    'nose',
     'numpy',
     'pandas',
     'mlflow',

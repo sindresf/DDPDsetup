@@ -1,11 +1,13 @@
 import fire
 
+from ML import test
+
 
 class CLI:
-    def __init__(self, msg):
-        self.lol = msg
+    def test(self, msg, args: str = "yes"):
+        test(args)
+        print(msg)
 
 
-if __name__ == '__main__':
-    cli = fire(CLI("mao"))
-    print(CLI("lol").lol)
+def main():
+    fire.Fire(CLI)
