@@ -62,5 +62,6 @@ def test(digit: int = 0, shuffle: bool = False):
     plt.yticks(())
     plt.show()
 
+    # TODO: SHAP VALUE THIS SHITT!
     # TODO: rewrite so mlf can log the metrics
     # TODO: mlf to add the artifacts of the plots
