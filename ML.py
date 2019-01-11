@@ -1,7 +1,4 @@
-# TODO: here make (copy paste in)
-# TODO: super simple ML thing
-# TODO: for the google fire to connect to and run
-
+import mlflow as mlf
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -13,6 +10,7 @@ from sklearn.datasets import load_digits
 
 
 def test(digit: int = 0, shuffle: bool = False):
+    # TODO: mlf log the arguments, add the params as arguments
     digits = load_digits()
     if shuffle:
         np.random.shuffle(digits.images)
@@ -35,11 +33,11 @@ def test(digit: int = 0, shuffle: bool = False):
     reduced_data = PCA(n_components=2).fit_transform(data)
     kmeans = KMeans(init='k-means++', n_clusters=n_digits, n_init=10)
     kmeans.fit(reduced_data)
-    print("KMeans with effort inertia, ", kmeans.inertia_)
-    print("KMeans with effort completeness score, ", metrics.completeness_score(labels, kmeans.labels_),)
-    print("KMeans with effort v_measure score, ", metrics.v_measure_score(labels, kmeans.labels_),)
+    print("KMeans with effort inertia, ", np.round(kmeans.inertia_, 2))
+    print("KMeans with effort completeness score, ", np.round(metrics.completeness_score(labels, kmeans.labels_),2)*100)
+    print("KMeans with effort v_measure score, ", np.round(metrics.v_measure_score(labels, kmeans.labels_), 2)*100)
     print("KMeans with effort silhouette score, ",
-          metrics.silhouette_score(data, kmeans.labels_, metric='euclidean', sample_size=250))
+          np.round(metrics.silhouette_score(data, kmeans.labels_, metric='euclidean', sample_size=250), 2)*100)
 
     h = .006
     x_min, x_max = reduced_data[:, 0].min() - 1, reduced_data[:, 0].max() + 1
@@ -63,3 +61,6 @@ def test(digit: int = 0, shuffle: bool = False):
     plt.xticks(())
     plt.yticks(())
     plt.show()
+
+    # TODO: rewrite so mlf can log the metrics
+    # TODO: mlf to add the artifacts of the plots
